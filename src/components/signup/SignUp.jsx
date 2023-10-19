@@ -38,14 +38,13 @@ const defaultTheme = createTheme();
 
 export default function SignUp() {
   const [validatePass, setValidatePass] = useState(false);
+  const [isSamePassword, setIsSamePassword] = useState(false);
+  const [passwordValue, setPasswordValue] = useState("");
+  const [confirmPasswordValue, setConfirmPasswordValue] = useState("");
+  
 
 
-  function password_validate(p) {
-    return /[A-Z]/.test(p) && /[0-9]/.test(p) && !/[aeiou]/.test(p) && /^[@#][A-Za-z0-9]{7,13}$/.test(p);
-}
-
-
-
+  
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -55,8 +54,32 @@ export default function SignUp() {
       email: data.get("email"),
       password: data.get("password"),
     });
+    
   };
 
+
+  function validatePassword(e) {
+    let regex =  
+/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@.#$!%*?&])[A-Za-z\d@.#$!%*?&]{8,15}$/;
+    
+    const pass1 = e.target.value;
+    
+    setValidatePass(regex.test(pass1));
+    
+}
+
+  function confirmPass(e){
+    setConfirmPasswordValue(e.target.value);
+    console.log("pass is :" + passwordValue);
+    console.log("confirm Pass is :" + confirmPasswordValue);
+
+    // setIsSamePassword(passwordValue == e.target.value);
+    setIsSamePassword(passwordValue == confirmPasswordValue);
+    console.log("pass is :" + passwordValue);
+    console.log("confirm Pass is :" + confirmPasswordValue);
+    console.log("pass is same :" + isSamePassword);
+    
+  }
   return (
     <ThemeProvider theme={defaultTheme}>
       <Container component="main" maxWidth="xs">
@@ -130,6 +153,7 @@ export default function SignUp() {
                   type="password"
                   id="password"
                   autoComplete="new-password"
+                  onChange={(e)=>{setPasswordValue(e.target.value);validatePassword(e)}}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -141,6 +165,7 @@ export default function SignUp() {
                   type="password"
                   id="confirm_password"
                   autoComplete="confirm-password"
+                  onChange={(e)=>{setConfirmPasswordValue(e.target.value);confirmPass(e)}}
                 />
               </Grid>
               <Grid item xs={12}>
