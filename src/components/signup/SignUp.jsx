@@ -1,18 +1,18 @@
-import * as React from 'react';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
-import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { useState } from 'react';
+import * as React from "react";
+import Avatar from "@mui/material/Avatar";
+import Button from "@mui/material/Button";
+import CssBaseline from "@mui/material/CssBaseline";
+import TextField from "@mui/material/TextField";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
+import Link from "@mui/material/Link";
+import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
+import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import Typography from "@mui/material/Typography";
+import Container from "@mui/material/Container";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { useState } from "react";
 
 function Copyright(props) {
   return (
@@ -41,10 +41,6 @@ export default function SignUp() {
   const [isSamePassword, setIsSamePassword] = useState(false);
   const [passwordValue, setPasswordValue] = useState("");
   const [confirmPasswordValue, setConfirmPasswordValue] = useState("");
-  
-
-
-  
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -54,21 +50,18 @@ export default function SignUp() {
       email: data.get("email"),
       password: data.get("password"),
     });
-    
   };
 
-
   function validatePassword(e) {
-    let regex =  
-/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@.#$!%*?&])[A-Za-z\d@.#$!%*?&]{8,15}$/;
-    
-    const pass1 = e.target.value;
-    
-    setValidatePass(regex.test(pass1));
-    
-}
+    let regex =
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@.#$!%*?&])[A-Za-z\d@.#$!%*?&]{8,15}$/;
 
-  function confirmPass(e){
+    const pass1 = e.target.value;
+
+    setValidatePass(regex.test(pass1));
+  }
+
+  function confirmPass(e) {
     setConfirmPasswordValue(e.target.value);
     console.log("pass is :" + passwordValue);
     console.log("confirm Pass is :" + confirmPasswordValue);
@@ -78,7 +71,6 @@ export default function SignUp() {
     console.log("pass is :" + passwordValue);
     console.log("confirm Pass is :" + confirmPasswordValue);
     console.log("pass is same :" + isSamePassword);
-    
   }
   return (
     <ThemeProvider theme={defaultTheme}>
@@ -153,7 +145,10 @@ export default function SignUp() {
                   type="password"
                   id="password"
                   autoComplete="new-password"
-                  onChange={(e)=>{setPasswordValue(e.target.value);validatePassword(e)}}
+                  onChange={(e) => {
+                    setPasswordValue(e.target.value);
+                    validatePassword(e);
+                  }}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -165,7 +160,10 @@ export default function SignUp() {
                   type="password"
                   id="confirm_password"
                   autoComplete="confirm-password"
-                  onChange={(e)=>{setConfirmPasswordValue(e.target.value);confirmPass(e)}}
+                  onChange={(e) => {
+                    setConfirmPasswordValue(e.target.value);
+                    confirmPass(e);
+                  }}
                 />
               </Grid>
               <Grid item xs={12}>
