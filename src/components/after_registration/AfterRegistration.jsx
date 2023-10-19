@@ -13,7 +13,10 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useState } from "react";
-
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select, { SelectChangeEvent } from "@mui/material/Select";
 function Copyright(props) {
   return (
     <Typography
@@ -36,12 +39,7 @@ function Copyright(props) {
 
 const defaultTheme = createTheme();
 
-export default function SignUp() {
-  const [validatePass, setValidatePass] = useState(false);
-  const [isSamePassword, setIsSamePassword] = useState(false);
-  const [passwordValue, setPasswordValue] = useState("");
-  const [confirmPasswordValue, setConfirmPasswordValue] = useState("");
-
+export default function AfterRegistration() {
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -51,27 +49,11 @@ export default function SignUp() {
       password: data.get("password"),
     });
   };
+  const [tpu, settpu] = useState("");
+  const handleChange = (e) => {
+    settpu(e.target.value);
+  };
 
-  function validatePassword(e) {
-    let regex =
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@.#$!%*?&])[A-Za-z\d@.#$!%*?&]{8,15}$/;
-
-    const pass1 = e.target.value;
-
-    setValidatePass(regex.test(pass1));
-  }
-
-  function confirmPass(e) {
-    setConfirmPasswordValue(e.target.value);
-    console.log("pass is :" + passwordValue);
-    console.log("confirm Pass is :" + confirmPasswordValue);
-
-    // setIsSamePassword(passwordValue == e.target.value);
-    setIsSamePassword(passwordValue == confirmPasswordValue);
-    console.log("pass is :" + passwordValue);
-    console.log("confirm Pass is :" + confirmPasswordValue);
-    console.log("pass is same :" + isSamePassword);
-  }
   return (
     <ThemeProvider theme={defaultTheme}>
       <Container component="main" maxWidth="xs">
@@ -88,47 +70,71 @@ export default function SignUp() {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Pay For use
+            Pay Per use
           </Typography>
           <Box
             component="form"
             noValidate
             onSubmit={handleSubmit}
-            sx={{ mt: 3 }}
+            sx={{ mt: 1 }}
           >
-            <Grid container spacing={3}>
-              <Grid item xs={18}>
-                <TextField
-                  autoComplete="given-name"
-                  name="firstName"
-                  required
-                  fullWidth
-                  id="firstName"
-                  label="First Name"
-                  autoFocus
-                />
-              </Grid>
-              <Grid item xs={18}>
-                <TextField
-                  required
-                  fullWidth
-                  id="lastName"
-                  label="Last Name"
-                  name="lastName"
-                  autoComplete="family-name"
-                />
-              </Grid>
-              <Grid item xs={18}>
-                <TextField
-                  required
-                  fullWidth
-                  id="lastName"
-                  label="Last Name"
-                  name="lastName"
-                  autoComplete="family-name"
-                />
-              </Grid>
-            </Grid>
+            <FormControl sx={{ m: 1, minWidth: 400 }}>
+              <InputLabel id="demo-simple-select-helper-label">
+                Transaction Per Use
+              </InputLabel>
+              <Select
+                labelId="demo-simple-select-helper-label"
+                id="demo-simple-select-helper"
+                value={tpu}
+                label="Transaction Per Use"
+                onChange={handleChange}
+              >
+                <MenuItem value="">
+                  <em>None</em>
+                </MenuItem>
+                <MenuItem value={10}>Ten</MenuItem>
+                <MenuItem value={20}>Twenty</MenuItem>
+                <MenuItem value={30}>Thirty</MenuItem>
+              </Select>
+            </FormControl>
+            <FormControl sx={{ m: 1, minWidth: 400 }}>
+              <Select
+                value={tpu}
+                onChange={handleChange}
+                displayEmpty
+                inputProps={{ "aria-label": "Without label" }}
+              >
+                <MenuItem value="">
+                  <em>None</em>
+                </MenuItem>
+                <MenuItem value={10}>Ten</MenuItem>
+                <MenuItem value={20}>Twenty</MenuItem>
+                <MenuItem value={30}>Thirty</MenuItem>
+              </Select>
+            </FormControl>
+            <FormControl sx={{ m: 1, minWidth: 400 }}>
+              <Select
+                value={tpu}
+                onChange={handleChange}
+                displayEmpty
+                inputProps={{ "aria-label": "Without label" }}
+              >
+                <MenuItem value="">
+                  <em>None</em>
+                </MenuItem>
+                <MenuItem value={10}>Ten</MenuItem>
+                <MenuItem value={20}>Twenty</MenuItem>
+                <MenuItem value={30}>Thirty</MenuItem>
+              </Select>
+            </FormControl>
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+            >
+              See Details
+            </Button>
           </Box>
         </Box>
         <Copyright sx={{ mt: 5 }} />
