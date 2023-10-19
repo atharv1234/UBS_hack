@@ -10,8 +10,9 @@ import ListItemDecorator from "@mui/joy/ListItemDecorator";
 import Typography from "@mui/joy/Typography";
 import Check from "@mui/icons-material/Check";
 import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
+import { PropaneSharp } from "@mui/icons-material";
 
-export default function CreateCard() {
+export default function CreateCard(props) {
   return (
     <div>
       <Card
@@ -67,13 +68,12 @@ export default function CreateCard() {
         </List>
         <Divider inset="none" />
         <CardActions>
-          <Typography level="title-lg" sx={{ mr: "auto" }}>
-            5.990€{" "}
-            <Typography fontSize="sm" textColor="text.tertiary">
-              / month
-            </Typography>
-          </Typography>
-          <Button endDecorator={<KeyboardArrowRight />}>Create Card</Button>
+          <Button
+            onClick={() => props.setCardCreation(!props.cardCreation)}
+            endDecorator={<KeyboardArrowRight />}
+          >
+            Create Card
+          </Button>
         </CardActions>
       </Card>
     </div>

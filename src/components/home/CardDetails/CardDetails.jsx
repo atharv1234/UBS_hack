@@ -48,12 +48,6 @@ export default function CardDetails() {
         </List>
         <Divider inset="none" />
         <CardActions>
-          <Typography level="title-lg" sx={{ mr: "auto" }}>
-            3.990€{" "}
-            <Typography fontSize="sm" textColor="text.tertiary">
-              / month
-            </Typography>
-          </Typography>
           <Button
             variant="soft"
             color="neutral"

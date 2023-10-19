@@ -49,6 +49,7 @@
 // }
 
 import * as React from "react";
+import { useState } from "react";
 import Box from "@mui/joy/Box";
 import Button from "@mui/joy/Button";
 import Card from "@mui/joy/Card";
@@ -62,11 +63,27 @@ import Typography from "@mui/joy/Typography";
 import Check from "@mui/icons-material/Check";
 import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
 import { makeObservable, observable, computed } from "mobx";
-import CreateCard from "./CardDetails/CardDetails";
-import CardDetails from "./CardDetails/CreateCard";
+import CardDetails from "./CardDetails/CardDetails";
+import CreateCard from "./CardDetails/CreateCard";
+import StepperElement from "../StepperElement/StepperElement";
 
 const Home = (props) => {
-  return <>{props.login ? <CardDetails /> : <CreateCard />}</>;
+  const [cardCreation, setCardCreation] = useState(true);
+  return (
+    <>
+      {cardCreation ? (
+        <>
+          <CreateCard
+            cardCreation={cardCreation}
+            setCardCreation={setCardCreation}
+          />
+          <CardDetails />
+        </>
+      ) : (
+        <StepperElement />
+      )}
+    </>
+  );
 };
 
 export default Home;
