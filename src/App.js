@@ -3,6 +3,7 @@ import Login from "./components/login/Login";
 import SignUp from "./components/signup/SignUp";
 import Home from "./components/home/Home";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import CardsRegistered from "./components/CardsRegistered/CardsRegistered";
 function App() {
   let login = true;
   return (
@@ -12,6 +13,7 @@ function App() {
           <Route path="*" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/home" element={<Home login={login} />} />
+          <Route path="/cards_registered" element={<CardsRegistered />}/>
         </Routes>
       </BrowserRouter>
     </div>
