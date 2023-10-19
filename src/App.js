@@ -1,20 +1,19 @@
 import "./App.css";
-import VirtualCardRegistration from "./components/VirtualCardRegistration/VCReg";
 import Login from "./components/login/Login";
 import SignUp from "./components/signup/SignUp";
-import AfterRegistration from "./components/after_registration/AfterRegistration";
+import Home from "./components/home/Home";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import RegisterCardBank from "./components/registerCardBank/RegisterCardBank";
+import CardsRegistered from "./components/CardsRegistered/CardsRegistered";
 function App() {
+  let login = true;
   return (
-    <div>
+    <div style={{ maxWidth: "1024px", margin: "auto" }}>
       <BrowserRouter>
         <Routes>
-          <Route path="/signup" element={<SignUp />} />
           <Route path="*" element={<Login />} />
-          <Route path="/vcregistration" element={<VirtualCardRegistration />} />
-          <Route path="/registerCard" element={<RegisterCardBank />} />
-          <Route path="/after_register" element={<AfterRegistration />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/home" element={<Home login={login} />} />
+          <Route path="/cards_registered" element={<CardsRegistered />}/>
         </Routes>
       </BrowserRouter>
     </div>
