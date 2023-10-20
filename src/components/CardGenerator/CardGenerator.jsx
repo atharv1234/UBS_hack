@@ -11,6 +11,7 @@ import { RadioGroup } from '@mui/material';
 import Radio from '@mui/material/Radio';
 import FormControlLabel from '@mui/material/FormControlLabel';
 
+import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
 
@@ -158,6 +159,7 @@ function CardGenerator() {
           Create My Card
         </Button>
       </div>
+      <div style={{display:"flex"}}>
       {createCard && (
          <Card style = {{...cardStyles,background: cardColor}} sx={{
           minWidth: 275, backgroundColor: '#DA70D6', width: '337px',
@@ -180,11 +182,38 @@ function CardGenerator() {
                       Valid Till : 10/25
                   </Typography>
               </Typography>
-
+        
           </CardContent>
-      </Card>
+      </Card> 
+     
+      
+      ) }
+       {createCard && (
+      <Card  style = {{...cardStyles,background: cardColor}} sx={{
+        minWidth: 275, backgroundColor: '#DA70D6', width: '337px',
+        height: '232px', borderRadius: '10px',
 
-      )}
+    }}>
+                <Typography backgroundColor='#28282B' width='100%' marginTop='28px' color="#28282B" fontSize='25px'>K</Typography>
+                
+                <Box marginTop='10px' marginLeft='10px' display="flex" >
+                    
+                {/* <div display='flex' justifyContent="space-around" width='100%' > */}
+                    <div style={{width:"300px",height:"25px",
+  background: 'repeating-linear-gradient(60deg, black, black 10px, white 10px, white 20px)'}}></div>
+                <div><Typography alignSelf='center' marginLeft="2px" marginRight="20px">866</Typography></div>
+                {/* </div> */}
+                
+              
+                </Box>
+                
+               <Box display='flex' justifyContent='space-between' width='90%' marginTop='70px' marginLeft='10px' >
+                <Typography>Customer Signature</Typography>
+                <Typography>One Card</Typography>
+               </Box>
+                
+            </Card> )}
+            </div>
     </div>
   );
 }
