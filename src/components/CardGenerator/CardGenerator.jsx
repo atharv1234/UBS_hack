@@ -21,7 +21,7 @@ const cardStyles = {
   margin: '0 auto',
   display: 'flex',
   flexDirection: 'column',
-  alignItems: 'center',
+  alignItems: 'left',
   padding: '16px',
   boxShadow: '0px 3px 6px #00000029',
   position: 'relative',
@@ -44,12 +44,12 @@ const cardNumberStyles = {
 };
 
 const cardDetailsStyles = {
-  fontSize: '1.0rem',
+  fontSize: '1.1rem',
   color: 'white',
 };
 
 const fieldSpacing = {
-  marginBottom: '16px',
+  marginBottom: '18px',
 };
 
 const circleButtonStyles = {
@@ -73,7 +73,7 @@ const colorOptions = [
   },
 ];
 
-function CardDashboard() {
+function CardGenerator() {
   const [cardHolderName, setCardHolderName] = useState('');
   const [refreshRate, setRefreshRate] = useState('');
   const [cardColor, setCardColor] = useState(
@@ -159,30 +159,34 @@ function CardDashboard() {
         </Button>
       </div>
       {createCard && (
-        <Card style={{ ...cardStyles, background: cardColor }}>
+         <Card style = {{...cardStyles,background: cardColor}} sx={{
+          minWidth: 275, backgroundColor: '#DA70D6', width: '337px',
+          height: '232px', borderRadius: '10px',
+
+      }}>
+
           <CardContent>
-            <div style={cardHeaderStyles}>
-              <Typography variant="h6">Virtual Card</Typography>
-              <Typography style={cardNumberStyles}>{cardNumber}</Typography>
-            </div>
-            <div style={fieldSpacing}>
-              <Typography style={cardDetailsStyles}>
-                 {cardHolderName}
+              <Typography sx={{ fontSize: 30 }} color="text.secondary" gutterBottom>
+                  One Card
               </Typography>
-            </div>
-            <div style={fieldSpacing}>
-              <Typography style={cardDetailsStyles}>
-                Expires: {expirationDate}
+              <Typography variant="h5" component="div" style={{ textAlign: 'left' }}>
+                  5244  2150  8252  6420
               </Typography>
-            </div>
-            <div style={fieldSpacing}>
-              <Typography style={cardDetailsStyles}>CVV: {cvv}</Typography>
-            </div>
+
+
+              <Typography textAlign='left' fontWeight='bold' marginTop='60px'>
+                  John Dee
+                  <Typography style={{ textAlign: 'left' }}>
+                      Valid Till : 10/25
+                  </Typography>
+              </Typography>
+
           </CardContent>
-        </Card>
+      </Card>
+
       )}
     </div>
   );
 }
 
-export default CardDashboard;
+export default CardGenerator;
